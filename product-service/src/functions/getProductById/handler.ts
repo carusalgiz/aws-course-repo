@@ -10,19 +10,27 @@ export const getProductById: APIGatewayProxyHandler = async (event, _context) =>
         const productService = new ProductService();
 
         const { productId } = event.pathParameters;
-        const product = await productService.getProductById(+productId);
+        try {
+            const product = await productService.getProductById(+productId);
 
-        if (product) {
-            return {
-                headers,
-                statusCode: 200,
-                body: JSON.stringify(product)
+            if (product) {
+                return {
+                    headers,
+                    statusCode: 200,
+                    body: JSON.stringify(product)
+                }
+            } else {
+                return {
+                    headers,
+                    statusCode: 404,
+                    body: JSON.stringify({ errorMessage: `Product with id "${productId}" doesn't exist` })
+                }
             }
-        } else {
+        } catch (error) {
             return {
                 headers,
-                statusCode: 404,
-                body: JSON.stringify({ errorMessage: `Product with id "${productId}" doesn't exist` })
+                statusCode: 500,
+                body: JSON.stringify({ errorMessage: `Issue appeared while trying to receive a product`, error })
             }
         }
     } else {
