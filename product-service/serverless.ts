@@ -8,46 +8,6 @@ const serverlessConfiguration: AWS = {
   service: "shop-service",
   frameworkVersion: "3",
   plugins: ["serverless-esbuild"],
-  // resources: {
-  //   Resources: {
-  //     ProductsTable: {
-  //       Type: "AWS::DynamoDB::Table",
-  //       Properties: {
-  //         TableName: '${self:provider.environment.PRODUCTS_TABLE}',
-  //         KeySchema: [{
-  //           AttributeName: "id",
-  //           KeyType: "HASH",
-  //         }],
-  //         AttributeDefinitions: [{
-  //           AttributeName: "id",
-  //           AttributeType: "S",
-  //         }],
-  //         ProvisionedThroughput: {
-  //           ReadCapacityUnits: 1,
-  //           WriteCapacityUnits: 1,
-  //         },
-  //       },
-  //     },
-  //     StocksTable: {
-  //       Type: "AWS::DynamoDB::Table",
-  //       Properties: {
-  //         TableName: '${self:provider.environment.STOCKS_TABLE}',
-  //         KeySchema: [{
-  //           AttributeName: "product_id",
-  //           KeyType: "HASH",
-  //         }],
-  //         AttributeDefinitions: [{
-  //           AttributeName: "product_id",
-  //           AttributeType: "S",
-  //         }],
-  //         ProvisionedThroughput: {
-  //           ReadCapacityUnits: 1,
-  //           WriteCapacityUnits: 1,
-  //         },
-  //       },
-  //     }
-  //   },
-  // },
   provider: {
     region: "eu-west-1",
     name: "aws",
