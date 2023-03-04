@@ -3,6 +3,5 @@ export default interface ProductResult {
     id: string,
     price: number,
     title: string,
-    count: number,
-    helpData?: Array<any>
+    count: number
 }
