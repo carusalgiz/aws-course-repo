@@ -6,6 +6,8 @@ const headers = {
 };
 
 export const getProductById: APIGatewayProxyHandler = async (event, _context) => {
+    console.log("getProductById incoming request: ", event.path, " Body: ", event.body, " QueryParams: ", event.queryStringParameters, " PathParams: ", event.pathParameters);
+
     if (event.pathParameters?.productId) {
         const { productId } = event.pathParameters;
         try {
