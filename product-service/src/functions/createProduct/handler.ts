@@ -11,6 +11,12 @@ export const createProduct: APIGatewayProxyHandler = async (event, _context) => 
   const { title, description, price } = JSON.parse(event.body);
 
   if (!title || !description || !price) {
+    return {
+      headers,
+      statusCode: 400,
+      body: JSON.stringify({ errorMessage: `Product data is invalid. Please check that product have all required fields` })
+    }    
+  } else {
     try {
       const productId: string = uuid.v4();
       const product = await productService.createProduct({
@@ -31,12 +37,6 @@ export const createProduct: APIGatewayProxyHandler = async (event, _context) => 
           statusCode: 500,
           body: JSON.stringify({ errorMessage: `Issue appeared while trying to create a product`, error })
       }
-    }
-  } else {
-    return {
-      headers,
-      statusCode: 400,
-      body: JSON.stringify({ errorMessage: `Product data is invalid. Please check that product have all required fields` })
     }
   }  
 };
