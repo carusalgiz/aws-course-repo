@@ -1,5 +1,5 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { ProductService } from 'src/services/product-service.service';
+import { productService } from 'src/config/serviceDBinit';
 
 const headers = {
     "Access-Control-Allow-Origin": "*"
@@ -7,11 +7,9 @@ const headers = {
 
 export const getProductById: APIGatewayProxyHandler = async (event, _context) => {
     if (event.pathParameters?.productId) {
-        const productService = new ProductService();
-
         const { productId } = event.pathParameters;
         try {
-            const product = await productService.getProductById(+productId);
+            const product = await productService.getProductById(productId);
 
             if (product) {
                 return {

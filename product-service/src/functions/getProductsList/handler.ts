@@ -1,8 +1,7 @@
 import { APIGatewayProxyHandler } from 'aws-lambda';
-import { ProductService } from 'src/services/product-service.service';
+import { productService } from 'src/config/serviceDBinit';
 
 export const getProductsList: APIGatewayProxyHandler = async (event, _context) => {
-  const productService = new ProductService();
   const products = await productService.getProductList();
 
   return {
