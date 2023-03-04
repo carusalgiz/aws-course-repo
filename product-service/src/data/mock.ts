@@ -1,0 +1,81 @@
+const products = [
+    {
+      count: 2,
+      description: "Action role-playing game, Adventure game",
+      id: 1,
+      price: 24.16,
+      title: "Xenoblade Chronicles 3",
+    },
+    {
+      count: 2,
+      description: "Survival horror, Indie game, Puzzle Video Game, Adventure game, Shooter Video Game",
+      id: 2,
+      price: 18.2,
+      title: "Signalis",
+    },
+    {
+      count: 2,
+      description: "Adventure game, Indie game, Adventure",
+      id: 3,
+      price: 23.5,
+      title: "Norco",
+    },
+    {
+      count: 2,
+      description: "Adventure game, Action role-playing game, Shooter Video Game, Fighting game, Platform game",
+      id: 4,
+      price: 15.6,
+      title: "Horizon Forbidden West",
+    },
+    {
+      count: 2,
+      description: "Platform game, First-person shooter, Indie game, Adventure",
+      id: 5,
+      price: 23.0,
+      title: "Neon White",
+    },
+    {
+      count: 2,
+      description: "Role-playing Video Game, Indie game, Adventure game",
+      id: 6,
+      price: 12.3,
+      title: "Citizen Sleeper",
+    },
+    {
+      count: 2,
+      description: "Strategy game, Strategy Video Game",
+      id: 7,
+      price: 14.2,
+      title: "Marvel Snap",
+    },
+    {
+      count: 2,
+      description: "Roguelike, Indie game, Casual game, Dungeon crawl, Shoot 'em up",
+      id: 8,
+      price: 13.1,
+      title: "Vampire Survivors",
+    },
+    {
+      count: 2,
+      description: "Action-adventure game, Role-playing Video Game, Shooter Video Game, Fighting game, Hack and slash",
+      id: 9,
+      price: 17.85,
+      title: "God of War Ragnarök",
+    },
+    {
+      count: 2,
+      description: "Adventure game, Action role-playing game, Fighting game, Platform game",
+      id: 10,
+      price: 12.6,
+      title: "Elden Ring",
+    },
+    {
+      count: 2,
+      description: "Open world, Action role-playing game, Fighting game, Action-adventure game, Nonlinear gameplay",
+      id: 11,
+      price: 15.2,
+      title: "The Witcher 3",
+    },
+  ];
+  
+  export default products;

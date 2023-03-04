@@ -1,0 +1,34 @@
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"de2dae5c-3b58-4661-b2df-1ee3089091c4\"}, \"description\": {\"S\": \"Action role-playing game, Adventure game\"}, \"price\": {\"N\": \"24.16\"}, \"title\": {\"S\": \"Xenoblade Chronicles 3\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"de2dae5c-3b58-4661-b2df-1ee3089091c4\"}, \"count\": {\"N\": \"2\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"2ee36850-dfd6-459b-9c81-4de93d4a6413\"}, \"description\": {\"S\": \"Survival horror, Indie game, Puzzle Video Game, Adventure game, Shooter Video Game\"}, \"price\": {\"N\": \"18.2\"}, \"title\": {\"S\": \"Signalis\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"2ee36850-dfd6-459b-9c81-4de93d4a6413\"}, \"count\": {\"N\": \"1\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"4c1beb5c-e980-44ee-a316-6873f6da4bfd\"}, \"description\": {\"S\": \"Adventure game, Indie game, Adventure\"}, \"price\": {\"N\": \"23.5\"}, \"title\": {\"S\": \"Norco\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"4c1beb5c-e980-44ee-a316-6873f6da4bfd\"}, \"count\": {\"N\": \"3\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"5dc986a4-5182-4f32-9fa2-a37246fc9e22\"}, \"description\": {\"S\": \"Adventure game, Action role-playing game, Shooter Video Game, Fighting game, Platform game\"}, \"price\": {\"N\": \"15.6\"}, \"title\": {\"S\": \"Horizon Forbidden West\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"5dc986a4-5182-4f32-9fa2-a37246fc9e22\"}, \"count\": {\"N\": \"4\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"528920b8-d251-49a1-b946-13a88d1f2803\"}, \"description\": {\"S\": \"Platform game, First-person shooter, Indie game, Adventure\"}, \"price\": {\"N\": \"23.0\"}, \"title\": {\"S\": \"Neon White\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"528920b8-d251-49a1-b946-13a88d1f2803\"}, \"count\": {\"N\": \"5\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"7c7f0c14-3eae-4ece-b64e-0091f4dae0c2\"}, \"description\": {\"S\": \"Role-playing Video Game, Indie game, Adventure game\"}, \"price\": {\"N\": \"12.3\"}, \"title\": {\"S\": \"Citizen Sleeper\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"7c7f0c14-3eae-4ece-b64e-0091f4dae0c2\"}, \"count\": {\"N\": \"3\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"efc175da-9efa-4d73-aa69-f9a5a3e04de8\"}, \"description\": {\"S\": \"Strategy game, Strategy Video Game\"}, \"price\": {\"N\": \"14.2\"}, \"title\": {\"S\": \"Marvel Snap\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"efc175da-9efa-4d73-aa69-f9a5a3e04de8\"}, \"count\": {\"N\": \"7\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"5a69aac3-a455-40a6-90fa-0b9fb51c01e9\"}, \"description\": {\"S\": \"Roguelike, Indie game, Casual game, Dungeon crawl, Shoot em up\"}, \"price\": {\"N\": \"13.1\"}, \"title\": {\"S\": \"Vampire Survivors\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"5a69aac3-a455-40a6-90fa-0b9fb51c01e9\"}, \"count\": {\"N\": \"2\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"04c3e1d1-5d1b-40e5-85c0-92ce3fcc9154\"}, \"description\": {\"S\": \"Action-adventure game, Role-playing Video Game, Shooter Video Game, Fighting game, Hack and slash\"}, \"price\": {\"N\": \"17.85\"}, \"title\": {\"S\": \"God of War Ragnarök\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"04c3e1d1-5d1b-40e5-85c0-92ce3fcc9154\"}, \"count\": {\"N\": \"3\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"e9a15c13-7ab7-4b9b-ad7d-58fd8dad38c0\"}, \"description\": {\"S\": \"Adventure game, Action role-playing game, Fighting game, Platform game\"}, \"price\": {\"N\": \"12.6\"}, \"title\": {\"S\": \"Elden Ring\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"e9a15c13-7ab7-4b9b-ad7d-58fd8dad38c0\"}, \"count\": {\"N\": \"4\"}}"
+
+aws dynamodb put-item --table-name products --item "{\"id\": {\"S\":\"f9f54cb6-bfae-4931-b5d1-ad69b09dd6a2\"}, \"description\": {\"S\": \"Open world, Action role-playing game, Fighting game, Action-adventure game, Nonlinear gameplay\"}, \"price\": {\"N\": \"15.2\"}, \"title\": {\"S\": \"The Witcher 3\"}}"
+aws dynamodb put-item --table-name stocks --item "{\"product_id\": {\"S\":\"f9f54cb6-bfae-4931-b5d1-ad69b09dd6a2\"}, \"count\": {\"N\": \"1\"}}"
+
+pause
