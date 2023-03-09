@@ -8,9 +8,9 @@ const headers = {
   
 export const createProduct: APIGatewayProxyHandler = async (event, _context) => {
   console.log("createProduct incoming request: ", event.path, " Body: ", event.body, " QueryParams: ", event.queryStringParameters, " PathParams: ", event.pathParameters);
-  const { title, description, price } = JSON.parse(event.body);
+  const { title, description, price, count } = JSON.parse(event.body);
 
-  if (!title || !description || !price) {
+  if (!title || !description || !price || !count) {
     return {
       headers,
       statusCode: 400,
@@ -23,7 +23,8 @@ export const createProduct: APIGatewayProxyHandler = async (event, _context) => 
         id: productId,
         title,
         description,
-        price
+        price,
+        count
       });
 
       return {
