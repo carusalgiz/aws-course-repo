@@ -59,7 +59,7 @@ export class ProductService {
     return { ...product, count: stock?.count || 0 };
   }
 
-  async createProduct(product: Product): Promise<ProductResult> {
+  async createProduct(product: ProductResult): Promise<ProductResult> {
     await this.docClient
       .transactWrite({
         TransactItems: [
@@ -73,7 +73,7 @@ export class ProductService {
             Put: {
               Item: {
                 product_id: product.id,
-                count: 1,
+                count: product.count,
               },
               TableName: this.stocksTableName,
             },
