@@ -15,7 +15,7 @@ export const importFileParser: Handler = async event => {
   const Bucket = record.s3.bucket.name;
   const Key = record.s3.object.key;
 
-  const client = new S3Client({ region: process.env.REGION });
+  const client = new S3Client({ region: "eu-west-1" });
   const getCommand = new GetObjectCommand({ Bucket, Key });
 
   const response = await client.send(getCommand);
