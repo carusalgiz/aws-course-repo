@@ -7,7 +7,7 @@ import logger from '@libs/logger';
 import Product from 'src/model/Product';
 import Stock from 'src/model/Stock';
 
-const catalogBatchProcess: SQSHandler = async event => {
+export const catalogBatchProcess: SQSHandler = async event => {
   logger('catalogBatchProcess', event);
 
   const client = new DynamoDBClient({ region: "eu-west-1" });
@@ -15,7 +15,7 @@ const catalogBatchProcess: SQSHandler = async event => {
 
   const createProduct = async (r: SQSRecord): Promise<Product> => {
     const parsed = JSON.parse(r.body);
-    const { title, description, price, count } = parsed.data;
+    const { title, description, price, count } = parsed;
 
     if (!title || !description || !price || !count) {
       throw new Error('missed required data');
@@ -57,5 +57,3 @@ const catalogBatchProcess: SQSHandler = async event => {
   await snsClient.send(new PublishCommand(params));
   console.log('Notification sent');
 };
-
-export const main = catalogBatchProcess;
