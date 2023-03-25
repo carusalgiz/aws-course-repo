@@ -10,7 +10,7 @@ import Stock from 'src/model/Stock';
 const catalogBatchProcess: SQSHandler = async event => {
   logger('catalogBatchProcess', event);
 
-  const client = new DynamoDBClient({ region: process.env.REGION });
+  const client = new DynamoDBClient({ region: "eu-west-1" });
   const ddbDocClient = DynamoDBDocumentClient.from(client);
 
   const createProduct = async (r: SQSRecord): Promise<Product> => {
@@ -53,7 +53,7 @@ const catalogBatchProcess: SQSHandler = async event => {
     Subject: 'New Products',
     TopicArn: process.env.TOPIC_ARN
   };
-  const snsClient = new SNSClient({ region: process.env.REGION });
+  const snsClient = new SNSClient({ region: "eu-west-1" });
   await snsClient.send(new PublishCommand(params));
   console.log('Notification sent');
 };
