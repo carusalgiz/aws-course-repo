@@ -1,6 +1,12 @@
 import importFileParser from '@functions/importFileParser';
 import importProductsFile from '@functions/importProductsFile';
 import type { AWS } from '@serverless/typescript';
+import * as dotenv from 'dotenv';
+
+const env = dotenv.config().parsed;
+if (!env) {
+  throw Error('env is not specified');
+}
 
 const serverlessConfiguration: AWS = {
   service: 'import-service',
@@ -18,6 +24,7 @@ const serverlessConfiguration: AWS = {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
       s3BucketName: 'node-aws-course-import-service',
+      queueName: 'catalogItemsQueue'
     },
     iam: {
       role: {
@@ -29,6 +36,13 @@ const serverlessConfiguration: AWS = {
               'arn:aws:s3:::${self:provider.environment.s3BucketName}',
               'arn:aws:s3:::${self:provider.environment.s3BucketName}/*'
             ]
+          },
+          {
+            Effect: 'Allow',
+            Action: 'sqs:*',
+            Resource: {
+              'Fn::Sub': 'arn:aws:sqs:${self:provider.region}:${AWS::AccountId}:${self:provider.environment.queueName}'
+            }
           }
         ]
       }

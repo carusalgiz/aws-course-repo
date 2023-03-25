@@ -1,5 +1,6 @@
 import { Handler, S3EventRecord } from 'aws-lambda';
 import { S3Client, GetObjectCommand, CopyObjectCommand } from '@aws-sdk/client-s3';
+import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
 import csv from 'csv-parser';
 import { Readable } from 'stream';
 import logger from '@libs/logger';
@@ -12,6 +13,9 @@ export const importFileParser: Handler = async event => {
     return event;
   }
 
+  const sqsClient = new SQSClient({ region: "eu-west-1" });
+  const queue: Array<Record<string, string>> = [];
+
   const Bucket = record.s3.bucket.name;
   const Key = record.s3.object.key;
 
@@ -23,11 +27,14 @@ export const importFileParser: Handler = async event => {
     return event;
   }
 
+  let product = null;
+
   await new Promise<void>((resolve, reject) => {
     (response.Body as Readable)
       .pipe(csv({ strict: true }))
-      .on('data', data => {
-        console.log(`file data: ${JSON.stringify(data)}`);
+      .on('data', async data => {
+        product = data;
+        queue.push(data);
       })
       .on('error', reject)
       .on('end', () => {
@@ -35,6 +42,21 @@ export const importFileParser: Handler = async event => {
         resolve();
       });
   });
+
+  await Promise.all(
+    queue.map(async data => {
+      console.log('Start sending the message...');
+      console.log(data);
+      try {
+        await sqsClient.send(
+          new SendMessageCommand({ QueueUrl: process.env.SQS_URL, MessageBody: JSON.stringify(data) })
+        );
+        console.log('The message was sent');
+      } catch (e) {
+        console.log(e);
+      }
+    })
+  );
   
   const copyCommand = new CopyObjectCommand({
     CopySource: `${Bucket}/${Key}`,
