@@ -4,18 +4,20 @@ export default {
   handler: `${handlerPath(__dirname)}/handler.importProductsFile`,
   events: [
     {
-      http: {
+      httpApi: {
         method: 'get',
         path: '/import',
-        cors: true
-      },
-    },
-  ],
-  queryStringParameters: {
-    name: {
-      required: true,
-      type: 'string',
-      description: 'File name'
+        authorizer: {
+          name: 'httpApiAuthorizer'
+        },
+        queryStringParameters: {
+          name: {
+            required: true,
+            type: 'string',
+            description: 'File name'
+          }
+        }
+      }
     }
-  }
+  ]
 };

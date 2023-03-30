@@ -15,16 +15,30 @@ const serverlessConfiguration: AWS = {
   provider: {
     region: "eu-west-1",
     name: 'aws',
-    runtime: 'nodejs14.x',
-    apiGateway: {
-      minimumCompressionSize: 1024,
-      shouldStartNameWithService: true,
+    runtime: 'nodejs14.x',    
+    memorySize: 512,
+    timeout: 10,
+    httpApi: {
+      cors: true,
+      authorizers: {
+        httpApiAuthorizer: {
+          name: 'httpApiAuthorizer',
+          type: 'request',
+          enableSimpleResponses: true,
+          payloadVersion: '2.0',
+          resultTtlInSeconds: 0,
+          identitySource: ['$request.header.Authorization'],
+          functionArn:
+            'arn:aws:lambda:${self:provider.region}:${aws:accountId}:function:${self:provider.environment.AUTH_FUNC_NAME}'
+        }
+      }
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
       s3BucketName: 'node-aws-course-import-service',
-      queueName: 'CatalogItemsQueue'
+      queueName: 'CatalogItemsQueue',
+      AUTH_FUNC_NAME: 'authorization-service-dev-basicAuthorizer'
     },
     iam: {
       role: {
